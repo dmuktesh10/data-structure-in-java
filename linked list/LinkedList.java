@@ -51,6 +51,9 @@ class LinkedList
     System.out.println("________________________");
     System.out.println(list.getNth_r(list.head,1).data);
     System.out.println("________________________");
+    list.printList();
+    System.out.println(list.getNthFromEnd(2).data);
+    System.out.println("________________________");
 
 
   }
@@ -268,6 +271,17 @@ class LinkedList
     else 
       return getNth_r(current.next, position-1);
 
+  }
+  Node getNthFromEnd(int position)
+  {
+    Node current = head;
+    int len = list_length();
+    int positionFromBegining=len-position;
+    if(positionFromBegining<0)
+      System.out.println("Invalid position.");
+    for(int i=0;i<positionFromBegining;i++)
+      current = current.next;
+    return current;
   }
 }
 class Node
