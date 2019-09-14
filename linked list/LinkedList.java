@@ -54,7 +54,8 @@ class LinkedList
     list.printList();
     System.out.println(list.getNthFromEnd(2).data);
     System.out.println("________________________");
-
+    System.out.println(list.getNthFromEndUsingTwoPointers(2).data);
+    System.out.println("________________________");
 
   }
   void printList()
@@ -282,6 +283,21 @@ class LinkedList
     for(int i=0;i<positionFromBegining;i++)
       current = current.next;
     return current;
+  }
+  Node getNthFromEndUsingTwoPointers(int position)
+  {
+    Node current,previous;
+    int counter = 0;
+    current=head;
+    previous=head;
+    while(current!=null)
+    {
+       counter++;
+       current=current.next;
+       if(counter >  position)
+         previous=previous.next;         
+    }
+    return previous;
   }
 }
 class Node
