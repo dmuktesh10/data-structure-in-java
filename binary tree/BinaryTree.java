@@ -21,6 +21,8 @@ class BinaryTree
     bt.postorder(bt.root);
     System.out.println("");
     bt.iInorder(bt.root);
+    System.out.println("");
+    bt.iPreorder(bt.root);
   }
   BinaryTree(int val)
   {
@@ -67,6 +69,23 @@ class BinaryTree
         System.out.print(current.data+" ");
         current=current.right;
       }
+    }
+  }
+  void iPreorder(Node root)
+  {
+    if(root==null)
+    return;
+    StackAsLinkList s= new StackAsLinkList();
+    Node current = root;
+    s.push(current);
+    while(!s.isEmpty())
+    {
+      current = s.pop();
+      System.out.print(current.data + " ");
+      if(current.right!=null)
+        s.push(current.right);
+      if(current.left!=null)  
+        s.push(current.left);
     }
   }
 }
