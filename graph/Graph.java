@@ -42,6 +42,25 @@ public class Graph
     }
   }
 
+  void DFS(int v)
+  {
+    boolean[] visited = new boolean[V];
+    DFSUtil(v, visited);
+  }
+
+  void DFSUtil(int n, boolean[] visited)
+  {
+    visited[n]=true;
+    System.out.print(n+ " ");
+    Iterator<Integer> itr = adjList[n].listIterator();
+    while(itr.hasNext())
+    {
+      n=itr.next();
+      if(!visited[n])
+        DFSUtil(n,visited);
+    }
+  }
+
   public static void main(String[] args)
   {
     Graph g = new Graph(4);
@@ -52,5 +71,7 @@ public class Graph
     g.addEdge(2,3);
     g.addEdge(3,3);
     g.BFS(2);
+    System.out.println("");
+    g.DFS(2);
   }
 }
